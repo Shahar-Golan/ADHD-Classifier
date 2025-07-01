@@ -35,7 +35,7 @@ The code is modular, so you can swap models or preprocessing steps with minimal 
 
 ```bash
 # Clone your fork
-git clone https://github.com/<Shahar-Golan>/ADHD-Classifier.git
+git clone https://github.com/Shahar-Golan/ADHD-Classifier.git
 cd ADHD-Classifier
 
 # Create environment (Python ≥ 3.8 recommended)
