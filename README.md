@@ -1,27 +1,48 @@
 # ADHD Classifier 🧠
 
-This project aims to develop a machine learning-based classifier to help identify children likely to be diagnosed with Attention Deficit Hyperactivity Disorder (ADHD), using data from the National Survey of Children’s Health (NSCH).
+A reproducible machine-learning pipeline for predicting children at risk of Attention-Deficit/Hyperactivity Disorder (ADHD) using the publicly available National Survey of Children’s Health (NSCH) dataset.
 
-## 📊 Dataset
+---
 
-The dataset is derived from the [NSCH](https://www.cdc.gov/nchs/slaits/nsch.htm), containing demographic and health-related survey responses from parents of over 100,000 children in the U.S. It includes features such as:
-- Child age, sex, race
-- Medical conditions and behavioral history
-- Family background and environment
+## 1  Overview
 
-## ⚙️ Preprocessing Steps
+Early identification of ADHD can improve access to timely interventions.  
+This project trains several baseline models (Logistic Regression, Random Forest) and an optimized Random Forest classifier that:
 
-1. **Null filtering**: Removed features with >80% nulls, and entries with >80% null values.
-2. **Low variance**: Dropped columns with very low variability across samples.
-3. **Redundancy**: Removed manually known redundant or irrelevant features.
-4. **Feature engineering**: Created new statistical groupings and behavior-based flags.
-5. **Target preparation**: Created a binary classification label based on ADHD diagnosis.
+* Ingests raw NSCH survey files (≈ 100 k respondents)  
+* Performs automated cleaning, encoding, and feature-engineering  
+* Evaluates models with cross-validated metrics and class-imbalance handling  
+* Outputs an interpretable report of feature importances and performance scores
 
-## 🚀 Getting Started
+The code is modular, so you can swap models or preprocessing steps with minimal changes.
 
-### Prerequisites
+---
 
-- Python 3.7+
-- Install required packages:
-  ```bash
-  pip install pandas numpy matplotlib
+## 2  Dataset
+
+| Source | National Survey of Children’s Health (NSCH) |
+|--------|---------------------------------------------|
+| Years  | 2021 – 2022 (combined PUF files)            |
+| Size   | ~ 102 k children, 400 + variables           |
+| Access | 🔑 **Required** (free, but registration)    |
+
+1. Request the Public Use File (PUF) via the Child and Adolescent Health Measurement Initiative:  
+   <https://www.childhealthdata.org/help/dataset>
+2. In the short form indicate: **“Academic research on ADHD classification”** as your purpose.  
+3. After approval, download the CSV + codebook zip and place it in the project folder.
+
+## 3  Installation
+
+```bash
+# Clone your fork
+git clone https://github.com/<Shahar-Golan>/ADHD-Classifier.git
+cd ADHD-Classifier
+
+# Create environment (Python ≥ 3.8 recommended)
+python -m venv .venv
+source \.venv\Scripts\activate
+
+# Install core dependencies
+pip install -r requirements.txt
+
+
