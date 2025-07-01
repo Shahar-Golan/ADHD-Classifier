@@ -4,11 +4,9 @@ from remove_nulls import df
 
 rare_condition_cols = ["CystFib_2122", "blood_2122", "palsy_2122", "genetic_2122", "DownSynd_2122"]
 
-
-
 # 1) How common each condition feature across the whole database (with a positive value)
 prevalence = {col: (df[col].isin([2, 3])).sum() for col in rare_condition_cols}
-plt.figure(figsize=(8,4))
+plt.figure(figsize=(8, 4))
 plt.bar(prevalence.keys(), prevalence.values())
 plt.ylabel('Number of Children')
 plt.title('Prevalence of Selected Rare Conditions')
@@ -22,21 +20,19 @@ mask_removed = df[rare_condition_cols].isin([2, 3]).any(axis=1)
 removed = mask_removed.sum()
 kept = total - removed
 
-plt.figure(figsize=(6,6))
+plt.figure(figsize=(6, 6))
 plt.pie([kept, removed], labels=['Kept', 'Removed'], autopct='%1.1f%%', startangle=90)
 plt.title('Dataset Split: Kept vs. Removed Records')
 plt.tight_layout()
 plt.show()
 
-
-rare_condition_cols =[col for col in rare_condition_cols if col != "genetic_2122"]
-rare_condition_cols =[col for col in rare_condition_cols if col in df.columns]
+rare_condition_cols = [col for col in rare_condition_cols if col != "genetic_2122"]
+rare_condition_cols = [col for col in rare_condition_cols if col in df.columns]
 rare_condition_check = df[rare_condition_cols].fillna(1)
 print(f"Rare disease columns found in the dataset: {rare_condition_cols}")
 
 for col in rare_condition_cols:
     print(f"{col}: {df[col].dropna().unique()}")
-
 
 # Here will filter the rows (inputs) of the subjects that has rare condition/disease
 

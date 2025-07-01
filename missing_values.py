@@ -11,7 +11,7 @@ print(missing_summary.head(20))
 
 pct = missing_summary['missing_percent']
 
-plt.figure(figsize=(8,4))
+plt.figure(figsize=(8, 4))
 plt.hist(pct, bins=20, edgecolor='k')
 plt.axvline(80, color='r', linestyle='--', label='80% cutoff')
 plt.axvline(50, color='orange', linestyle='--', label='50% cutoff')

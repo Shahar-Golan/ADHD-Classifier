@@ -1,5 +1,3 @@
-import pandas as pd
-import matplotlib.pyplot as plt
 from low_variance_cols import df_reduced
 
 related_features_to_drop = [
@@ -243,4 +241,4 @@ print(f"Number of related features we're going to drop: {len(unique_features_to_
 # Here we'll drop the related features:
 df_reduced.drop(columns=unique_features_to_drop, errors='ignore', inplace=True)
 print("All features that are related to main features were successfully dropped!")
-print("New shape of our dataset: ", df_reduced.shape )
+print("New shape of our dataset: ", df_reduced.shape)
